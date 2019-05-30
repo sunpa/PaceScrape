@@ -1,0 +1,172 @@
+﻿@model IEnumerable<PaceScrape.Domain.Entities.pace_scrape_results_forpayments>
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page">
+    <h2>Pace Scrape - Search Results</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td><input type="submit" name="Refresh" value="Refresh" /></td>
+                <td style="padding-right:25px;"></td>
+                <td>@Html.ActionLink("HOME", "Index", "Home")</td>
+            </tr>
+        </table>
+        <br />
+
+
+
+        <fieldset>
+
+            <table class="table">
+                <tr style="background-color:darkblue;color:white;">
+                    <th width="80px">
+                        @Html.DisplayName("Account #")
+                    </th>
+                    <th width="100px">
+                        @Html.DisplayName("Apn")
+                    </th>
+                    <th width="100px">
+                        @Html.DisplayName("County")
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.RequestedDate)
+                </th>*@
+                    <th width="110px">
+                        @Html.DisplayName("Processed Date")
+                    </th>
+                    <th width="50px">
+                        @Html.DisplayName("Status")
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.DueDate1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DueDate2)
+                </th>*@
+                    <th width="120px">
+                        @Html.DisplayName("Payment Status 1")
+                    </th>
+                    <th width="120px">
+                        @Html.DisplayName("Payment Status 2")
+                    </th>
+                    <th width="80px">
+                        @Html.DisplayName("Paid Date 1")
+                    </th>
+                    <th width="80px">
+                        @Html.DisplayName("Paid Date 2")
+                    </th>
+                    <th width="100px">
+                        @Html.DisplayName("Amount Paid 1")
+                    </th>
+                    <th width="100px">
+                        @Html.DisplayName("Amount Paid 2")
+                    </th>
+                    <th width="150px">
+                        @Html.DisplayName("Payment Process Date")
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.Comments)
+                </th>*@
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.CheckStatus1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckStatus2)
+                </th>*@
+                    <th style="background-color: aliceblue;width:20px;"></th>
+                </tr>
+
+                @{var rowColor = "#FFFFE0";}
+                @foreach (var item in Model)
+                {
+
+                    <tr style="background-color:@rowColor;">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Apn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.County)
+                        </td>
+                        @*<td>
+                        @Html.DisplayFor(modelItem => item.RequestedDate)
+                    </td>*@
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.ProessedDate)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        @*<td>
+                        @Html.DisplayFor(modelItem => item.DueDate1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DueDate2)
+                    </td>*@
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.PaymentStatus1)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.PaymentStatus2)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.PaidDate1)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.PaidDate2)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.AmountPaid1)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.AmountPaid2)
+                        </td>
+                        <td align="center">
+                            @Html.DisplayFor(modelItem => item.PaymentProcessDate)
+                        </td>
+                        @*<td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.CheckStatus1)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.CheckStatus2)
+                    </td>*@
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
+
+                            <input type="button" name="Edit" value="Edit" onclick="javascript:window.open('/Home/Edit/'+@item.Id,'editscraperesult','width=850, height=780, toolbar=yes, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, titlebar=no');" border="0" rel="noopener noreferrer" style="cursor: pointer;height:18px;vertical-align:middle;font-size:x-small;background-color:darksalmon;color:white; " />
+
+                        </td>
+                    </tr>
+
+                    if (@rowColor.Equals("#FFFFE0"))
+                    {
+                        rowColor = "#E9E9E9";
+                    }
+                    else
+                    {
+                        rowColor = "#FFFFE0";
+                    }
+                }
+            </table>
+            @Html.Hidden("ScrapeProcessedDates", ViewData["scrapeProcessedDate"])
+            @Html.Hidden("Counties", ViewData["county"])
+            @Html.Hidden("Status", ViewData["status"])
+            @Html.Hidden("AccountNo", ViewData["accountno"])
+        </fieldset>
+
+    }
+
+</div>
+

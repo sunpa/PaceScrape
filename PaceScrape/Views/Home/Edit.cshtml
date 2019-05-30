@@ -1,0 +1,188 @@
+﻿@model PaceScrape.Domain.Entities.ScrapeEdit
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page">
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="color:red;font-size:small" ;>
+            @ViewData["UpdateSubmit"]
+        </div>
+
+        <fieldset>
+            <div>
+                <table>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Account Number:</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.accountno)
+                                @Html.ValidationMessageFor(model => model.apn, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Apn:</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.apn)
+                                @Html.ValidationMessageFor(model => model.apn, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+
+                    @*<tr>
+                        <div class="editor-label">
+                            <td><b>Payment Process Status:</b></td>
+                            <td>@Html.DisplayFor(model => model.p.PaymentProcessStatus)</td>
+                        </div>
+                    </tr>*@
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>County:</b></td>
+                            <td>
+                                <a href=@Model.countyurl onclick="javascript:window.open(Model.countryurl,'countyurl','width=850, height=620, toolbar=yes, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, titlebar=no');" border="0" rel="noopener noreferrer" target="_blank">@Model.county</a>
+
+
+                                @Html.ValidationMessageFor(model => model.county, "", new { @class = "text-danger" })
+
+
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Requested Date:</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.requesteddate)
+                                @Html.ValidationMessageFor(model => model.requesteddate, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Processed Date:</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.proesseddate)
+                                @Html.ValidationMessageFor(model => model.proesseddate, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Due Date 1:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.duedate1) (mm/dd/yyyy)
+                                @Html.ValidationMessageFor(model => model.duedate1, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Due Date 2:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.duedate2) (mm/dd/yyyy)
+                                @Html.ValidationMessageFor(model => model.duedate2, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Payment Status 1:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.paymentstatus1) (PAID or DUE)
+                                @Html.ValidationMessageFor(model => model.paymentstatus1, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Payment Status 2:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.paymentstatus2) (PAID or DUE)
+                                @Html.ValidationMessageFor(model => model.paymentstatus2, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Paid Date 1:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.paiddate1) (mm/dd/yyyy)
+                                @Html.ValidationMessageFor(model => model.paiddate1, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Paid Date 2:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.paiddate2) (mm/dd/yyyy)
+                                @Html.ValidationMessageFor(model => model.paiddate2, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Amount Paid 1:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.amountpaid1) (nnnn.nn)
+                                @Html.ValidationMessageFor(model => model.amountpaid1, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Amount Paid 2:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.amountpaid2) (nnnn.nn)
+                                @Html.ValidationMessageFor(model => model.amountpaid2, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+                    @*<tr>
+            <div class="editor-label">
+                <td><b>Check Status 1:</b></td>
+                <td>
+                    @Html.EditorFor(model => model.CheckStatus1)
+                    @Html.ValidationMessageFor(model => model.CheckStatus1, "", new { @class = "text-danger" })
+                </td>
+            </div>
+        </tr>
+        <tr>
+            <div class="editor-label">
+                <td><b>Check Status 2:</b></td>
+                <td>
+                    @Html.EditorFor(model => model.CheckStatus2)
+                    @Html.ValidationMessageFor(model => model.CheckStatus2, "", new { @class = "text-danger" })
+                </td>
+            </div>
+        </tr>*@
+
+                </table>
+
+                <br />
+
+                <div>
+                    <input type="submit" value="Update" />
+                </div>
+
+            </div>
+        </fieldset>
+    }
+
+    <br />
+    <div>
+        @*&nbsp;&nbsp;&nbsp;@Html.ActionLink("HOME", "Index", "Home")*@
+        &nbsp;&nbsp;&nbsp;
+        <input type="button" value="Close" onclick="javascript:window.close();" />
+    </div>
+
+</div>

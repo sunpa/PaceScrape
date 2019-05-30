@@ -1,0 +1,29 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    margin: 0 2.4em 0 2.4em;
+    padding: 0;
+    color: #696969;
+    background-color: #ffffcc;
+}
+
+fieldset {
+    border: 3px solid #ddd;
+    padding: 1.4em 1.4em 1.4em 1.4em;
+    margin: 0;
+    background-color: aliceblue; 
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #0066ff;
+    margin-top: 0.6em;
+    /*text-transform: uppercase*/
+}
+
+th {
+    height: 24px;
+}
+td{
+    height: 22px;
+}

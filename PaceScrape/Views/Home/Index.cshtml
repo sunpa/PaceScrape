@@ -1,0 +1,68 @@
+﻿@model PaceScrape.Domain.Entities.pace_scrape_results_forpayments
+@{
+    ViewBag.Title = "Pace Scrape";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h2>Pace Scrape</h2>
+
+    @using (Html.BeginForm("Results", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <br />
+            <table>
+
+                <tr>
+                    <td style="width:160px">
+                        <b>Scraping Processed Date:</b>
+                    </td>
+                    <td style="width:140px">
+                        @Html.DropDownList("ScrapeProcessedDates")
+                    </td>
+                    <td style="width:20px"></td>
+                    <td style="width:60px">
+                        <b>Counties:</b>
+                    </td>
+                    <td style="width:160px">
+                        @Html.DropDownList("Counties")
+                    </td>
+                    <td style="width:20px"></td>
+                    <td style="width:110px">
+                        <b>Scraping Status:</b>
+                    </td>
+                    <td style="width:200px">
+                        @Html.DropDownList("Status")
+                    </td>
+
+                </tr>
+
+            </table>
+
+            <br /> <br />
+            <table>
+                <tr>
+                    <td>
+                        <input type="submit" value="Load Scrape Results" />
+                    </td>
+                    <td style="width:80px"></td>
+                    <td style="width:160px">
+                        <b>OR by Account Number:</b>
+                    </td>
+                    <td style="width:50px">
+                        @Html.TextBox("AccountNo")
+                    </td>
+
+                </tr>
+            </table>
+
+
+        </fieldset>
+
+    }
+</div>
+
+
+
+
