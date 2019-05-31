@@ -38,7 +38,7 @@ namespace PaceScrape.Domain.Entities
 
         public string paymentstatus { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:M/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:M/dd/yyyy}")]
         public DateTime? paiddate { get; set; }
 
         public decimal? amountpaid { get; set; }

@@ -119,17 +119,14 @@ namespace PaceScrape.Domain.Concrete
 
         public void UpdateScrapeResult(pace_scrape_results_forprocessing scrapeResult)
         {
-            pace_scrape_results_forpayments dbEntry = context.ScrapeResultsForPayments.Find(scrapeResult.Id);
+            pace_scrape_results_forprocessing dbEntry = context.ScrapeResultsForProcessing.Find(scrapeResult.Id);
 
             //log it first
-            //AddScrapeChangeLog(dbEntry, scrapeResult);
+            AddScrapeChangeLog(dbEntry, scrapeResult);
 
-            //dbEntry.PaymentStatus1 = scrapeResult.PaymentStatus1;
-            //dbEntry.PaymentStatus2 = scrapeResult.PaymentStatus2;
-            //dbEntry.PaidDate1 = scrapeResult.PaidDate1;
-            //dbEntry.PaidDate2 = scrapeResult.PaidDate2;
-            //dbEntry.AmountPaid1 = scrapeResult.AmountPaid1;
-            //dbEntry.AmountPaid2 = scrapeResult.AmountPaid2;
+            dbEntry.PaymentStatus = scrapeResult.PaymentStatus;
+            dbEntry.PaidDate = scrapeResult.PaidDate;
+            dbEntry.AmountPaid = scrapeResult.AmountPaid;
 
             context.SaveChanges();
         }
@@ -144,47 +141,31 @@ namespace PaceScrape.Domain.Concrete
 
                 dbLog.AccountNo = dbEntry.AccountNo;
                 dbLog.Apn = dbEntry.Apn;
-                dbLog.County = dbEntry.County;
-                //dbLog.ProcessedDate = dbEntry.ProessedDate;
-                //dbLog.Status = dbEntry.Status;
-                //dbLog.PaymentStatus1before = dbEntry.PaymentStatus1;
-                //dbLog.PaymentStatus1after = scrapeResult.PaymentStatus1;
-                //dbLog.PaymentStatus2before = dbEntry.PaymentStatus2;
-                //dbLog.PaymentStatus2after = scrapeResult.PaymentStatus2;
-                //dbLog.PaidDate1before = dbEntry.PaidDate1;
-                //dbLog.PaidDate1after = scrapeResult.PaidDate1;
-                //dbLog.PaidDate2before = dbEntry.PaidDate2;
-                //dbLog.PaidDate2after = scrapeResult.PaidDate2;
-                //dbLog.AmountPaid1before = dbEntry.AmountPaid1;
-                //dbLog.AmountPaid1after = scrapeResult.AmountPaid1;
-                //dbLog.AmountPaid2before = dbEntry.AmountPaid2;
-                //dbLog.AmountPaid2after = scrapeResult.AmountPaid2;
-                dbLog.Userid = userid;
-                if (dbLog.PaymentStatus1before != dbLog.PaymentStatus1after)
-                {
-                    dbLog.PaymentStatus1Changed = true;
-                }
-                if (dbLog.PaymentStatus2before != dbLog.PaymentStatus2after)
-                {
-                    dbLog.PaymentStatus2Changed = true;
-                }
-                if (dbLog.PaidDate1before != dbLog.PaidDate1after)
-                {
-                    dbLog.PaidDate1Changed = true;
-                }
-                if (dbLog.PaidDate2before != dbLog.PaidDate2after)
-                {
-                    dbLog.PaidDate2Changed = true;
-                }
-                if (dbLog.AmountPaid1before != dbLog.AmountPaid1after)
-                {
-                    dbLog.AmountPaid1Changed = true;
-                }
-                if (dbLog.AmountPaid2before != dbLog.AmountPaid2after)
-                {
-                    dbLog.AmountPaid2Changed = true;
-                }
+                dbLog.County = dbEntry.County;                
+                dbLog.ProcessedDate = dbEntry.ProcessedDate;
+                dbLog.ScrapingStatus = dbEntry.ScrapingStatus;
+                dbLog.PaymentNo = dbEntry.PaymentNo;
+                dbLog.InstallmentNo = dbEntry.InstallmentNo;
+                dbLog.PaymentStatusbefore = dbEntry.PaymentStatus;
+                dbLog.PaymentStatusafter = scrapeResult.PaymentStatus;
+                dbLog.PaidDatebefore = dbEntry.PaidDate;
+                dbLog.PaidDateafter = scrapeResult.PaidDate;
+                dbLog.AmountPaidbefore = dbEntry.AmountPaid;
+                dbLog.AmountPaidafter = scrapeResult.AmountPaid;
 
+                dbLog.Userid = userid;
+                if (dbLog.PaymentStatusbefore != dbLog.PaymentStatusafter)
+                {
+                    dbLog.PaymentStatusChanged = true;
+                }
+                if (dbLog.PaidDatebefore != dbLog.PaidDateafter)
+                {
+                    dbLog.PaidDateChanged = true;
+                }
+                if (dbLog.AmountPaidbefore != dbLog.AmountPaidafter)
+                {
+                    dbLog.AmountPaidChanged = true;
+                }
                 context.ScrapeChangeLog.Add(dbLog);
             }
             catch (Exception ex)

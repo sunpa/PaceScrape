@@ -14,29 +14,17 @@ namespace PaceScrape.Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public decimal Id { get; set; }
 
-        public string PaymentStatus1before { get; set; }
+        public string PaymentStatusbefore { get; set; }
 
-        public string PaymentStatus2before { get; set; }
-
-        public string PaymentStatus1after { get; set; }
-
-        public string PaymentStatus2after { get; set; }
+        public string PaymentStatusafter { get; set; }
         
-        public string PaidDate1before { get; set; }
+        public DateTime? PaidDatebefore { get; set; }
 
-        public string PaidDate2before { get; set; }
+        public DateTime? PaidDateafter { get; set; }
 
-        public string PaidDate1after { get; set; }
+        public decimal? AmountPaidbefore { get; set; }
 
-        public string PaidDate2after { get; set; }
-
-        public decimal? AmountPaid1before { get; set; }
-
-        public decimal? AmountPaid2before { get; set; }
-
-        public decimal? AmountPaid1after { get; set; }
-
-        public decimal? AmountPaid2after { get; set; }
+        public decimal? AmountPaidafter { get; set; }
 
         public string AccountNo { get; set; }
 
@@ -46,20 +34,18 @@ namespace PaceScrape.Domain.Entities
 
         public DateTime? ProcessedDate { get; set; }
 
-        public string Status { get; set; }
+        public string ScrapingStatus { get; set; }
 
         public string Userid { get; set; }
 
-        public bool PaymentStatus1Changed { get; set; }
+        public decimal PaymentNo { get; set; }
 
-        public bool PaymentStatus2Changed { get; set; }
+        public decimal InstallmentNo { get; set; }
 
-        public bool PaidDate1Changed { get; set; }
+        public bool PaymentStatusChanged { get; set; }
 
-        public bool PaidDate2Changed { get; set; }
+        public bool PaidDateChanged { get; set; }
 
-        public bool AmountPaid1Changed { get; set; }
-
-        public bool AmountPaid2Changed { get; set; }
+        public bool AmountPaidChanged { get; set; }
     }
 }
