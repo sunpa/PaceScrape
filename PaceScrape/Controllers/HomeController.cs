@@ -1,4 +1,5 @@
-﻿using System;using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,19 +31,19 @@ namespace PaceScrape.Controllers
 
             foreach (var item in result)
             {
-                if (temp != item.ProessedDate.Value.ToShortDateString())
+                if (temp != item.ProcessedDate.Value.ToShortDateString())
                 {
                     scrapeProcessedDates.Add(new SelectListItem
                     {
-                        Text = item.ProessedDate.Value.ToShortDateString(),
-                        Value = item.ProessedDate.Value.ToShortDateString()
+                        Text = item.ProcessedDate.Value.ToShortDateString(),
+                        Value = item.ProcessedDate.Value.ToShortDateString()
                     });
-                    temp = item.ProessedDate.Value.ToShortDateString();
+                    temp = item.ProcessedDate.Value.ToShortDateString();
                 }
             }
             this.ViewData["ScrapeProcessedDates"] = scrapeProcessedDates;
 
-            pace_scrape_results_forpayments objModel = new pace_scrape_results_forpayments();
+            pace_scrape_results_forprocessing objModel = new pace_scrape_results_forprocessing();
             this.ViewData["Counties"] = objModel.getCountyList();
 
             List<SelectListItem> Status = new List<SelectListItem>();
@@ -69,7 +70,7 @@ namespace PaceScrape.Controllers
 
             if (string.IsNullOrEmpty(accountNo))
             {
-                return View(paceRepository.GetScrapeResults(scrapeProcessedDate, county, status).ToList());                                
+                return View(paceRepository.GetScrapeResults(scrapeProcessedDate, county, status).ToList());
             }
             else
             {
@@ -85,7 +86,7 @@ namespace PaceScrape.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(pace_scrape_results_forpayments scrapeResult)
+        public ActionResult Edit(pace_scrape_results_forprocessing scrapeResult)
         {
             int id = Convert.ToInt32(TempData["ID"]);
             try

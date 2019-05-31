@@ -38,22 +38,13 @@
                         </div>
                     </tr>
 
-                    @*<tr>
-                        <div class="editor-label">
-                            <td><b>Payment Process Status:</b></td>
-                            <td>@Html.DisplayFor(model => model.p.PaymentProcessStatus)</td>
-                        </div>
-                    </tr>*@
                     <tr>
                         <div class="editor-label">
                             <td><b>County:</b></td>
                             <td>
                                 <a href=@Model.countyurl onclick="javascript:window.open(Model.countryurl,'countyurl','width=850, height=620, toolbar=yes, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, titlebar=no');" border="0" rel="noopener noreferrer" target="_blank">@Model.county</a>
 
-
                                 @Html.ValidationMessageFor(model => model.county, "", new { @class = "text-danger" })
-
-
                             </td>
                         </div>
                     </tr>
@@ -70,101 +61,87 @@
                         <div class="editor-label">
                             <td><b>Processed Date:</b></td>
                             <td>
-                                @Html.DisplayFor(model => model.proesseddate)
-                                @Html.ValidationMessageFor(model => model.proesseddate, "", new { @class = "text-danger" })
+                                @Html.DisplayFor(model => model.processeddate)
+                                @Html.ValidationMessageFor(model => model.processeddate, "", new { @class = "text-danger" })
                             </td>
                         </div>
                     </tr>
                     <tr>
                         <div class="editor-label">
-                            <td><b>Due Date 1:</b></td>
+                            <td><b>Payment No:</b></td>
                             <td>
-                                @Html.EditorFor(model => model.duedate1) (mm/dd/yyyy)
-                                @Html.ValidationMessageFor(model => model.duedate1, "", new { @class = "text-danger" })
+                                @Html.DisplayFor(model => model.paymentno)
+                                @Html.ValidationMessageFor(model => model.paymentno, "", new { @class = "text-danger" })
                             </td>
                         </div>
                     </tr>
                     <tr>
                         <div class="editor-label">
-                            <td><b>Due Date 2:</b></td>
+                            <td><b>Installment No:</b></td>
                             <td>
-                                @Html.EditorFor(model => model.duedate2) (mm/dd/yyyy)
-                                @Html.ValidationMessageFor(model => model.duedate2, "", new { @class = "text-danger" })
+                                @Html.DisplayFor(model => model.installmentno)
+                                @Html.ValidationMessageFor(model => model.installmentno, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Due Date:</b></td>
+                            <td>
+                                @Html.DisplayFor(model => model.paymentduedate)
+                                @Html.ValidationMessageFor(model => model.paymentduedate, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Payment Status:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.paymentstatus) (PAID or DUE)
+                                @Html.ValidationMessageFor(model => model.paymentstatus, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Paid Date:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.paiddate) (mm/dd/yyyy)
+                                @Html.ValidationMessageFor(model => model.paiddate, "", new { @class = "text-danger" })
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="editor-label">
+                            <td><b>Amount Paid:</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.amountpaid) (nnnn.nn)
+                                @Html.ValidationMessageFor(model => model.amountpaid, "", new { @class = "text-danger" })
                             </td>
                         </div>
                     </tr>
                     <tr>
                         <div class="editor-label">
-                            <td><b>Payment Status 1:</b></td>
+                            <td><b>Payment Process Date:</b></td>
                             <td>
-                                @Html.EditorFor(model => model.paymentstatus1) (PAID or DUE)
-                                @Html.ValidationMessageFor(model => model.paymentstatus1, "", new { @class = "text-danger" })
+                                @Html.DisplayFor(model => model.paymentprocessdate)
+                                @Html.ValidationMessageFor(model => model.paymentprocessdate, "", new { @class = "text-danger" })
                             </td>
                         </div>
                     </tr>
                     <tr>
                         <div class="editor-label">
-                            <td><b>Payment Status 2:</b></td>
+                            <td><b>Payment Process Status:</b></td>
                             <td>
-                                @Html.EditorFor(model => model.paymentstatus2) (PAID or DUE)
-                                @Html.ValidationMessageFor(model => model.paymentstatus2, "", new { @class = "text-danger" })
+                                @Html.DisplayFor(model => model.paymentprocessstatus)
+                                @Html.ValidationMessageFor(model => model.paymentprocessstatus, "", new { @class = "text-danger" })
                             </td>
                         </div>
                     </tr>
-                    <tr>
-                        <div class="editor-label">
-                            <td><b>Paid Date 1:</b></td>
-                            <td>
-                                @Html.EditorFor(model => model.paiddate1) (mm/dd/yyyy)
-                                @Html.ValidationMessageFor(model => model.paiddate1, "", new { @class = "text-danger" })
-                            </td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="editor-label">
-                            <td><b>Paid Date 2:</b></td>
-                            <td>
-                                @Html.EditorFor(model => model.paiddate2) (mm/dd/yyyy)
-                                @Html.ValidationMessageFor(model => model.paiddate2, "", new { @class = "text-danger" })
-                            </td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="editor-label">
-                            <td><b>Amount Paid 1:</b></td>
-                            <td>
-                                @Html.EditorFor(model => model.amountpaid1) (nnnn.nn)
-                                @Html.ValidationMessageFor(model => model.amountpaid1, "", new { @class = "text-danger" })
-                            </td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <div class="editor-label">
-                            <td><b>Amount Paid 2:</b></td>
-                            <td>
-                                @Html.EditorFor(model => model.amountpaid2) (nnnn.nn)
-                                @Html.ValidationMessageFor(model => model.amountpaid2, "", new { @class = "text-danger" })
-                            </td>
-                        </div>
-                    </tr>
-                    @*<tr>
-            <div class="editor-label">
-                <td><b>Check Status 1:</b></td>
-                <td>
-                    @Html.EditorFor(model => model.CheckStatus1)
-                    @Html.ValidationMessageFor(model => model.CheckStatus1, "", new { @class = "text-danger" })
-                </td>
-            </div>
-        </tr>
-        <tr>
-            <div class="editor-label">
-                <td><b>Check Status 2:</b></td>
-                <td>
-                    @Html.EditorFor(model => model.CheckStatus2)
-                    @Html.ValidationMessageFor(model => model.CheckStatus2, "", new { @class = "text-danger" })
-                </td>
-            </div>
-        </tr>*@
 
                 </table>
 

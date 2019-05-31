@@ -79,6 +79,7 @@
     <Compile Include="Entities\pace_county_details.cs" />
     <Compile Include="Entities\pace_scrape_change_log.cs" />
     <Compile Include="Entities\pace_scrape_results_forpayments.cs" />
+    <Compile Include="Entities\pace_scrape_results_forprocessing.cs" />
     <Compile Include="Entities\ScrapeEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

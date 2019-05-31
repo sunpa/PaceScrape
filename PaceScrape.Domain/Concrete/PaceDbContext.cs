@@ -19,5 +19,7 @@ namespace PaceScrape.Domain.Concrete
         public DbSet<pace_county_details> CountyDetails { get; set; }
 
         public DbSet<pace_scrape_change_log> ScrapeChangeLog { get; set; }
+
+        public DbSet<pace_scrape_results_forprocessing> ScrapeResultsForProcessing { get; set; }
     }
 }
